@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PA1 - Task List</title>
+</head>
+
+<body>
+    <div id="task-body">
+        <h1 id="task-title">My Task List</h1>
+        <form id="task-form">
+            <div class="form-element">
+                <label for="task-input">Task:</label>
+                <input id="task-input" type="text">
+            </div>
+            <div class="form-element">
+                <label for="priority">Priority:</label>
+                <select id="priority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div class="form-element">
+                <button type="submit">Add Task</button>
+            </div>
+        </form>
+        <h2>Current Tasks:</h2>
+        <div class="task-list-header">
+            <p class="task-list-headers">Name</p>
+            <p class="task-list-headers">Priority</p>
+            <p class="task-list-headers">Status</p>
+        </div>
+        <div id="task-list"></div>
+    </div>
+</body>
+
+</html>
