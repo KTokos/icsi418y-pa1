@@ -8,13 +8,6 @@ const completedTaskList = document.querySelector("#completed-task-list");
 const currentTasks = [];
 const completedTasks = [];
 
-const task = {
-    id: 0,
-    name: "Finish personal project",
-    priority: "high",
-    completed: false
-};
-
 form.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -28,16 +21,16 @@ form.addEventListener("submit", function (event) {
         return;
     }
 
-    // Set task object values
-    task.id = task.id + 1;
-    task.name = taskName;
-    task.priority = taskPriority;
+    // Create task object
+    const task = {
+        id: Math.floor(Math.random() * 1000), // Number between 0 and 1000
+        name: taskName,
+        priority: taskPriority,
+        completed: false
+    };
 
     // Add task to currentTask list
     currentTasks.push(task);
-
-    // Log current tasks for testing
-    //console.log(currentTasks);
 
     // Create task element
     taskList.insertAdjacentHTML(
@@ -62,8 +55,12 @@ taskList.addEventListener('click', (event) => {
         const buttonParent = button.parentElement;
         const taskId = buttonParent.getAttribute("id");
 
+        console.log(currentTasks);
+
         // Find the task in the current tasks list and update completion value
         const completedTask = currentTasks.find(obj => obj.id == taskId);
+
+        console.log(completedTask);
 
         // Update the currentTasks array by removing the task
         const taskIndex = currentTasks.indexOf(completedTask);

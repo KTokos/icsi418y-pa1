@@ -48,6 +48,10 @@ h2 {
 
 }
 
+#completed-task-list {
+    text-decoration: line-through;
+}
+
 .task-list-element {
     display: flex;
     gap: 1em;
