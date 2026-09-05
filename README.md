@@ -1,6 +1,3 @@
-# icsi418y-pa1
-First homework assignment for ICSI418Y - Software Engineering.
-
 # Kristian Tokos - ICSI418Y - PA1
 
 ### PA1 - Task List
