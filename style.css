@@ -44,10 +44,6 @@ h2 {
     font-weight: bold;
 }
 
-#task-list {
-
-}
-
 #completed-task-list {
     text-decoration: line-through;
 }
@@ -59,8 +55,4 @@ h2 {
 
 .task-list-element > * {
     flex: 1;
-}
-
-.task-list-element p {
-    
 }

@@ -40,6 +40,7 @@ form.addEventListener("submit", function (event) {
             <p class="task-priority">${task.priority}</p>
             <p class="task-status">${task.completed.valueOf()}</p>
             <button id="complete-btn">Complete</button>
+            <button id="delete-btn">Delete</button>
         </div>`
     );
 })
@@ -51,38 +52,57 @@ taskList.addEventListener('click', (event) => {
         // Get button
         const button = event.target;
 
-        // Get the parent and the task id
-        const buttonParent = button.parentElement;
-        const taskId = buttonParent.getAttribute("id");
+        // Complete button was pressed
+        if (button.id === "complete-btn") {
+            // Get the parent and the task id
+            const buttonParent = button.parentElement;
+            const taskId = buttonParent.getAttribute("id");
 
-        console.log(currentTasks);
+            // Find the task in the current tasks list and update completion value
+            const completedTask = currentTasks.find(obj => obj.id == taskId);
 
-        // Find the task in the current tasks list and update completion value
-        const completedTask = currentTasks.find(obj => obj.id == taskId);
+            // Update the currentTasks array by removing the task
+            const taskIndex = currentTasks.indexOf(completedTask);
+            currentTasks.splice(taskIndex, 1);
 
-        console.log(completedTask);
+            // Update the completion value
+            completedTask.completed = true;
 
-        // Update the currentTasks array by removing the task
-        const taskIndex = currentTasks.indexOf(completedTask);
-        currentTasks.splice(taskIndex, 1);
+            // Add the task to the completed tasks array
+            completedTasks.push(completedTask);
 
-        // Update the completion value
-        completedTask.completed = true;
+            // Remove the div parent of the button
+            buttonParent.remove();
 
-        // Add the task to the completed tasks array
-        completedTasks.push(completedTask);
-
-        // Remove the div parent of the button
-        buttonParent.remove();
-
-        // Create task element in completed-task-list
-        completedTaskList.insertAdjacentHTML(
-            "beforeend",
-            `<div class="task-list-element" id="${completedTask.id}">
+            // Create task element in completed-task-list
+            completedTaskList.insertAdjacentHTML(
+                "beforeend",
+                `<div class="task-list-element" id="${completedTask.id}">
             <p class="task-name">${completedTask.name}</p>
             <p class="task-priority">${completedTask.priority}</p>
             <p class="task-status">${completedTask.completed.valueOf()}</p>
         </div>`
-        );
+            );
+
+            // No need to run following code
+            return;
+        }
+
+        // Delete button was pressed
+        if (button.id === "delete-btn") {
+            // Get the parent and the task id
+            const buttonParent = button.parentElement;
+            const taskId = buttonParent.getAttribute("id");
+
+            // Find the task in the current tasks list
+            const completedTask = currentTasks.find(obj => obj.id == taskId);
+
+            // Update the currentTasks array by removing the task
+            const taskIndex = currentTasks.indexOf(completedTask);
+            currentTasks.splice(taskIndex, 1);
+
+            // Remove the div parent of the button
+            buttonParent.remove();
+        }
     }
 })
